@@ -2,38 +2,34 @@
 
 ```mermaid
 flowchart TD
-    A[Start] --> B[sorting.js]
-    B --> C{File Sorting}
-    C --> |PDF Files| D[Create Directory Structure]
-    D --> E[extract-answers.js]
-    E --> F[Read PDF Facit Files]
+    A[Start] --> B[Sort Files]
+    B --> C{File Type?}
+    C --> |PDF| D[Create Directories]
+    D --> E[Extract Answers]
+    E --> F[Read Facit PDFs]
     F --> G[Call ChatGPT API]
     G --> H[Extract Answers]
-    H --> I[Save Facit Answers]
+    H --> I[Save Facit Data]
     
-    I --> J[openai-client.js]
-    J --> K[Read PDF Test Files]
-    K --> L[Call OpenAI API]
-    L --> M[Extract Test Answers]
-    M --> N[Save Test Answers]
+    I --> J[Process Test PDFs]
+    J --> K[Call OpenAI API]
+    K --> L[Extract Test Answers]
+    L --> M[Save Test Data]
     
-    N --> O[format-answers.js]
-    O --> P[Read Facit and Test Answers]
-    P --> Q[Compare Answers]
-    Q --> R[Generate CSV Results]
+    M --> N[Compare Answers]
+    N --> O[Generate CSV]
     
-    R --> S[create-excel.js]
-    S --> T[Create Excel Workbook]
-    T --> U[Summarize Results]
-    U --> V[Save Excel File]
+    O --> P[Create Excel Report]
+    P --> Q[Summarize Results]
+    Q --> R[Save Report]
     
-    V --> W[End]
+    R --> S[End]
     
-    classDef start fill:#f9f,stroke:#333,stroke-width:4px;
-    classDef process fill:#bbf,stroke:#333,stroke-width:2px;
-    classDef decision fill:#ffd,stroke:#333,stroke-width:2px;
+    classDef start fill:#4CAF50,stroke:#333,stroke-width:2px,color:#fff;
+    classDef process fill:#2196F3,stroke:#333,stroke-width:2px,color:#fff;
+    classDef decision fill:#FFC107,stroke:#333,stroke-width:2px,color:#000;
     
-    class A,W start;
-    class B,D,E,J,O,S process;
+    class A,S start;
+    class B,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R process;
     class C decision;
 ```
